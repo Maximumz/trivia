@@ -1,6 +1,6 @@
 # Trivia
 
-Checkout the [DEMO](http://trivia.mp-ltd.com/) for a quick overview of this project which I have created to develop my Angular skills.
+Checkout the [DEMO](https://trivia.mp-ltd.com/) for a quick overview of this project which I have created to develop my Angular skills.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
