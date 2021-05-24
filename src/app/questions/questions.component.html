@@ -1,0 +1,56 @@
+<div class="points-wrapper">
+  <h2>Total score: <span [className]="increase ? 'score add' : 'score minus'">{{ pointsTotal }}</span></h2>
+  <span [className]="movesTillStreak ? 'update moves' : 'update no-moves'">
+    <div *ngIf="movesTillStreak; else bonusOnNextStep">
+      Only {{ movesTillStreak }} moves till you get
+      <span class="points">{{ pointsBonus }}</span>
+      bonus points!
+    </div>
+    <ng-template #bonusOnNextStep>
+      On you're next move you could get
+      <span class="points">{{ pointsBonus }}</span>
+      bonus points!
+    </ng-template>
+  </span>
+</div>
+<div class="dropzone-wrapper" cdkDropListGroup>
+    <div *ngFor="let item of question" class="card highlight-card card-small">
+      <div class="question-heading">
+        <h2>Category: {{ item.category }}</h2>
+      </div>
+      <div class="question" cdkDropList>
+        <div class="question-box"
+            attr.data-answer="{{ item.correct_answer }}"
+            cdkDragBoundary=".dropzone-wrapper"
+            cdkDrag>
+          <span [innerHTML]="item.question"></span>
+        </div>
+      </div>
+    </div>
+    <div class="dropzones">
+      <div
+        cdkDropList
+        class="dropzone true"
+        [cdkDropListData]="true"
+        (cdkDropListDropped)="drop($event)"
+        (cdkDropListEntered)="hoverDropzone($event)"
+        (cdkDropListExited)="exitDropzone($event)"
+        cdkDrop>
+        <span class="pad">
+          <fa-icon [icon]="['fas', 'thumbs-up']" size="7x"></fa-icon>
+        </span>
+      </div>
+      <div
+        cdkDropList
+        class="dropzone false"
+        [cdkDropListData]="false"
+        (cdkDropListDropped)="drop($event)"
+        (cdkDropListEntered)="hoverDropzone($event)"
+        (cdkDropListExited)="exitDropzone($event)"
+        cdkDrop>
+        <span class="pad">
+          <fa-icon [icon]="['fas', 'thumbs-down']" size="7x"></fa-icon>
+        </span>
+      </div>
+  </div>
+</div>
